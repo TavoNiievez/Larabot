@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Larabot\Conversations;
 
-use BotMan\BotMan\Messages\Incoming\Answer;
-use BotMan\BotMan\Messages\Outgoing\Question;
-use BotMan\BotMan\Messages\Outgoing\Actions\Button;
 use BotMan\BotMan\Messages\Conversations\Conversation;
+use BotMan\BotMan\Messages\Incoming\Answer;
+use BotMan\BotMan\Messages\Outgoing\Actions\Button;
+use BotMan\BotMan\Messages\Outgoing\Question;
 
 final class ExampleConversation extends Conversation
 {
@@ -31,7 +31,7 @@ final class ExampleConversation extends Conversation
                 if ($answer->getValue() === 'joke') {
                     $joke = json_decode(file_get_contents('http://api.icndb.com/jokes/random'));
                     $this->say($joke->value->joke);
-                } else if ($answer->getValue() === 'info'){
+                } elseif ($answer->getValue() === 'info') {
                     $this->options();
                 }
             }
@@ -53,7 +53,7 @@ final class ExampleConversation extends Conversation
                 if ($answer->getValue() === 'hour') {
                     $hour = date('H:i');
                     $this->say('Son las '.$hour);
-                }else if ($answer->getValue() === 'day'){
+                } elseif ($answer->getValue() === 'day') {
                     $today = date('d/m/Y');
                     $this->say('Hoy es : '.$today);
                 }

@@ -2,25 +2,20 @@
 
 namespace Spatie\Skeleton\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Larabot\LarabotServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Spatie\Skeleton\SkeletonServiceProvider;
 
 class TestCase extends Orchestra
 {
     public function setUp(): void
     {
         parent::setUp();
-
-        Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Spatie\\Skeleton\\Database\\Factories\\'.class_basename($modelName).'Factory'
-        );
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            SkeletonServiceProvider::class,
+            LarabotServiceProvider::class,
         ];
     }
 

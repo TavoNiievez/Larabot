@@ -1,0 +1,19 @@
+@import '~bootstrap/scss/bootstrap';
+@import '../../../Kuros/resources/sass/variables';
+
+* {
+    box-sizing: content-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: radial-gradient(#57bfc7, #45a6b3);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}

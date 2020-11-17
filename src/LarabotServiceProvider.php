@@ -8,21 +8,25 @@ class LarabotServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__ . '/../config/botman/config.php' => config_path('botman/config.php'),
-            ], 'config');
-
-            $this->publishes([
-                __DIR__ . '/../config/botman/web.php' => config_path('botman/web.php'),
-            ], 'config');
-
-//            $this->publishes([
-//                __DIR__ . '/../resources/views' => base_path('resources/views/vendor/skeleton'),
-//            ], 'views');
+        if (!$this->app->runningInConsole()) {
+            return;
         }
 
-//        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'skeleton');
+        $this->publishes([
+            __DIR__ . '/../config/botman/config.php' => config_path('botman/config.php'),
+        ], 'config');
+
+        $this->publishes([
+            __DIR__ . '/../config/botman/web.php' => config_path('botman/web.php'),
+        ], 'config');
+
+        $this->publishes([
+            __DIR__ . '/../routes/botman.php' => config_path('routes/botman.php'),
+        ], 'config');
+
+        $this->publishes([
+            __DIR__ . '/../resources/views' => base_path('resources/views'),
+        ], 'views');
     }
 
     public function register()

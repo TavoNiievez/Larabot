@@ -14,7 +14,37 @@ composer require tavoniievez/larabot
 
 You can publish the config file with:
 ```bash
-php artisan vendor:publish --provider="Spatie\Skeleton\SkeletonServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Larabot\LarabotServiceProvider"
+```
+
+## Configuration
+
+```dotenv
+#.env
+GOOGLE_CLOUD_PROJECT=project-id
+GOOGLE_APPLICATION_CREDENTIALS="/full-path-to-credentials.json"
+```
+
+```php
+# app/Http/Middleware/VerifyCsrfToken.php
+protected $except = [
+    'botman',
+];
+```
+
+```php
+# app/Providers/RouteServiceProvider.php
+Route::namespace($this->namespace)
+    ->group(base_path('routes/botman.php'));
+```
+
+```php
+#config/app.php 
+'providers' => [
+
+    //Botman Driver
+    Larabot\Providers\DriverServiceProvider::class,
+],
 ```
 
 ## Commands

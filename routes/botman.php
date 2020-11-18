@@ -1,18 +1,18 @@
 <?php
 
 use BotMan\BotMan\BotMan;
-use Larabot\Conversations\ExampleConversation;
+use Larabot\Middleware\DialogFlowV2;
 
 /** @var BotMan $botman */
 $botman = app('botman');
 
-$botman->hears('Hi', fn (Botman $bot) =>
-$bot->reply('Hello!')
-);
+$dialogflow = DialogFlowV2::create('es')->listenForAction();
 
-$botman->hears('Iniciar chat', fn (Botman $bot) =>
-$bot->startConversation(new ExampleConversation())
-);
+$botman->middleware->received($dialogflow);
+
+$botman->hears('CrearPrueba', function (BotMan $bot) {
+    $bot->reply('Te hablo desde Google Dialogflow.');
+})->middleware($dialogflow);
 
 $botman->fallback(fn (BotMan $bot) =>
 $bot->reply('Lo siento, no reconozco ese comando, intenta utilizar "Iniciar chat"')

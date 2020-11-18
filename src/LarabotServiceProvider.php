@@ -21,16 +21,24 @@ class LarabotServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->publishes([
-            __DIR__ . '/../routes/botman.php' => config_path('routes/botman.php'),
-        ], 'config');
-
-        $this->publishes([
             __DIR__ . '/../resources/views' => base_path('resources/views'),
         ], 'views');
+
+        $this->publishes([
+            __DIR__ . '/../resources/sass' => base_path('resources/sass'),
+        ], 'sass');
+
+        $this->publishes([
+            __DIR__ . '/../resources/js' => base_path('resources/js'),
+        ], 'js');
+
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'larabot');
+
+        $this->loadRoutesFrom(__DIR__ . '/../routes/botman.php');
     }
 
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__ . '/../config/skeleton.php', 'skeleton');
+        $this->mergeConfigFrom(__DIR__ . '/../config/larabot.php', 'larabot');
     }
 }

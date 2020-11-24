@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Skeleton\Tests;
+namespace Larabot\Tests;
 
 use Larabot\LarabotServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
@@ -27,10 +27,5 @@ class TestCase extends Orchestra
             'database' => ':memory:',
             'prefix' => '',
         ]);
-
-        /*
-        include_once __DIR__.'/../database/migrations/create_skeleton_table.php.stub';
-        (new \CreatePackageTable())->up();
-        */
     }
 }

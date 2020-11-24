@@ -29,7 +29,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Larabot\\": "src"
+            "Larabot\\": "src",
+            "Tests\\": "src/Tests"
         }
     },
     "autoload-dev": {

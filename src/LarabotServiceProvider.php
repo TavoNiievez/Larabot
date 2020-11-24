@@ -36,6 +36,14 @@ class LarabotServiceProvider extends ServiceProvider
             __DIR__ . '/../routes' => base_path('routes'),
         ]);
 
+        $this->publishes([
+            __DIR__ . '/Tests/Unit/BotmanTest.php' => base_path('tests/Unit/BotmanTest.php'),
+        ]);
+
+        $this->publishes([
+            __DIR__ .'/../public' => base_path('public'),
+        ]);
+
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'larabot');
     }
 

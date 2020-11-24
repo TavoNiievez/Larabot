@@ -1,6 +1,8 @@
 <?php
 
-namespace Spatie\Skeleton\Tests;
+namespace Larabot\Tests;
+
+use Orchestra\Testbench\TestCase;
 
 class ExampleTest extends TestCase
 {
